@@ -1,0 +1,9 @@
+.city-selector-component .input-field,.city-selector-component .city-list{
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.city-selector-component-left-side .input-field,.city-selector-component-left-side .city-list{
+  width: 90%;
+}

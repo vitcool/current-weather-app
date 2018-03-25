@@ -28,7 +28,7 @@
   to { transform: rotate(360deg); }
 }
 
-.city-selector-component{
+.city-selector-component-left-side{
   float: left;
   width: 50%;
 }
@@ -36,4 +36,8 @@
 .current-weather-component{
   float: right;
   width: 50%;
+}
+
+.input-city-selector{
+  width: 30%;
 }
