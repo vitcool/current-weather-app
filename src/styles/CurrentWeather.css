@@ -1,0 +1,65 @@
+.main-info {
+  float: left;
+}
+
+.additional-info {
+  float: right;
+}
+
+.city-name {
+  font-size: 22px;
+  font-weight: 600;
+  max-width: 260px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.temperature {
+  font-size: 20px;
+}
+
+.temperature span {
+  font-size: 14px;
+}
+
+.pressure,
+.humidity,
+.wind,
+.clouds {
+  height: 25px;
+  display: table;
+}
+
+.pressure img,
+.humidity img,
+.wind img,
+.clouds img {
+  width: 25px;
+  margin-right: 20px;
+}
+
+.pressure span,
+.humidity span,
+.wind span,
+.clouds span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.weather-info {
+  max-width: 50%;
+  min-height: 150px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.actual-weather-data {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px;
+  padding-top: 10px;
+  color: white;
+}
