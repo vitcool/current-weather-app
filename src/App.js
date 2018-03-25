@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { bindActionCreators } from '../../dog-saga/node_modules/redux';
+import { bindActionCreators } from 'redux';
 import * as fetchActions from "./actions/fetch";
 import {connect} from 'react-redux';
 import CitySelector from './components/CitySelector';
