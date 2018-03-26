@@ -10,16 +10,12 @@ export default class CitySelector extends Component {
       selectedCityId: 0
     };
   }
-  componentDidMount() {
-    //this.props.elementClick(700051);
-    //this.setState({searchValue: "nikopol"})
-  }
   elementClick(cityId) {
     this.setState({ selectedCityId: cityId });
     this.props.elementClick(cityId);
   }
   onFilterChange(event) {
-    this.setState({ searchValue: event.target.value });
+    event.target.value.length > 3 ? this.setState({ searchValue: event.target.value }) : null;
   }
   filterData(element) {
     return element.name
