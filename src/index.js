@@ -9,7 +9,7 @@ import createSagaMiddleware from 'redux-saga';
 import { Provider }  from 'react-redux';
 
 import rootReducer from './reducers';
-import { watcherSaga } from './sagas/sagas';
+import { watcherSaga, watcherPixabySaga } from './sagas/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -19,6 +19,7 @@ let store = createStore(
 );
 
 sagaMiddleware.run(watcherSaga);
+sagaMiddleware.run(watcherPixabySaga);
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();

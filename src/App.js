@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { bindActionCreators } from "redux";
 import * as fetchActions from "./actions/fetch";
+import * as imagesActions from "./actions/images";
 import { connect } from "react-redux";
 import CitySelector from "./components/CitySelector";
 import CurrentWeather from "./components/CurrentWeather";
@@ -13,10 +14,11 @@ class App extends Component {
     this.getApiData = this.getApiData.bind(this);
   }
   getApiData(index) {
-    this.props.actions.getApiData(index);
+    this.props.fetch.getApiData(index);
+    this.props.images.getCountryImage("ukraine");
   }
   render() {
-    const { data, fetching } = this.props;
+    const { data, fetching, imagesData, imagesFetching } = this.props;
 
     return (
       <div className="App">
@@ -34,13 +36,17 @@ function mapStateToProps(state, props) {
   return {
     data: state.fetch.data,
     fetching: state.fetch.fetching,
-    error: state.fetch.error
+    error: state.fetch.error,
+    imagesData: state.images.data,
+    imagesFetching: state.images.fetching,
+    imagesError: state.images.error,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(fetchActions, dispatch)
+    fetch: bindActionCreators(fetchActions, dispatch),
+    images: bindActionCreators(imagesActions, dispatch),
   };
 }
 
