@@ -4,9 +4,9 @@ import * as actions from '../actions/fetch';
 import { API_KEY } from './../keys/index';
 
 // action types
-const API_CALL_REQUEST = "API_CALL_REQUEST";
-const API_CALL_SUCCESS = "API_CALL_SUCCESS";
-const API_CALL_FAILURE = "API_CALL_FAILURE";
+const API_CALL_REQUEST = "cwa/currentWeatherData/API_CALL_REQUEST";
+const API_CALL_SUCCESS = "cwa/currentWeatherData/API_CALL_SUCCESS";
+const API_CALL_FAILURE = "cwa/currentWeatherData/API_CALL_FAILURE";
 
 // watcher saga: watches for actions dispatched to the store, starts worker saga
 export function* watcherSaga() {
