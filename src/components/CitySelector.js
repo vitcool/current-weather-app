@@ -10,9 +10,9 @@ export default class CitySelector extends Component {
       selectedCityId: 0
     };
   }
-  elementClick(cityId) {
+  elementClick(cityId, countryCode) {
     this.setState({ selectedCityId: cityId });
-    this.props.elementClick(cityId);
+    this.props.elementClick(cityId, countryCode);
   }
   onFilterChange(event) {
     event.target.value.length > 3 ? this.setState({ searchValue: event.target.value }) : null;
@@ -33,7 +33,7 @@ export default class CitySelector extends Component {
                 href="#"
                 className={"collection-item " + (this.state.selectedCityId == element.id ? "active" : "")}
                 key={element.id}
-                onClick={this.elementClick.bind(this, element.id)}
+                onClick={this.elementClick.bind(this, element.id, element.country)}
               >
                 {element.name} - {element.country}
               </a>

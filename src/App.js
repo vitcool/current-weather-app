@@ -15,9 +15,9 @@ class App extends Component {
     super(props);
     this.getApiData = this.getApiData.bind(this);
   }
-  getApiData(index) {
+  getApiData(index, countryCode) {
     this.props.fetch.getApiData(index);
-    this.props.images.getImage("ukraine");
+    this.props.images.getImage(countryCode);
   }
   render() {
     const { data, fetching, imagesData, imagesFetching } = this.props;
