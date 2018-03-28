@@ -3,15 +3,15 @@ import axios from "axios";
 import * as actions from "../actions/fetch";
 import { API_KEY_PIXABAY } from "./../keys/index";
 
-const API_PIXABY_REQUEST = "API_PIXABY_REQUEST";
-const API_PIXABY_SUCCESS = "API_PIXABY_SUCCESS";
-const API_PIXABY_FAILURE = "API_PIXABY_FAILURE";
+const API_CALL_REQUEST = "cwa/images/API_CALL_REQUEST";
+const API_CALL_SUCCESS = "cwa/images/API_CALL_SUCCESS";
+const API_CALL_FAILURE = "cwa/images/API_CALL_FAILURE";
 
 export function* watcherPixabySaga() {
-  yield takeLatest(API_PIXABY_REQUEST, workerPixabySaga);
+  yield takeLatest(API_CALL_REQUEST, workerSaga);
 }
 
-function fetchPixabyData(action) {
+function fetchData(action) {
   return axios({
     method: "get",
     url: "https://pixabay.com/api/",
@@ -22,13 +22,13 @@ function fetchPixabyData(action) {
   });
 }
 
-function* workerPixabySaga(action) {
+function* workerSaga(action) {
   try {
-    const response = yield call(fetchPixabyData, action);
+    const response = yield call(fetchData, action);
     // dispatch a success action to the store with the new dog
-    yield put({ type: API_PIXABY_SUCCESS, response });
+    yield put({ type: API_CALL_SUCCESS, response });
   } catch (error) {
     // dispatch a failure action to the store with the error
-    yield put({ type: API_PIXABY_FAILURE, error });
+    yield put({ type: API_CALL_FAILURE, error });
   }
 }

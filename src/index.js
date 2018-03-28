@@ -12,16 +12,6 @@ import configureStore from "./state/store";
 
 const store = configureStore();
 
-// import rootReducer from './reducers';
-// import rootSaga from './sagas/rootSaga';
-
-// const sagaMiddleware = createSagaMiddleware();
-// let store = createStore(
-//     rootReducer,
-//     applyMiddleware(sagaMiddleware)
-// );
-// sagaMiddleware.run(rootSaga);
-
 ReactDOM.render(
   <Provider store={store}>
     <App />
