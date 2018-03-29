@@ -7,6 +7,7 @@ import CurrentWeather from "./../components/CurrentWeather";
 
 import { weatherOperations } from "./../state/ducks/weather";
 import { imagesOperations } from "./../state/ducks/images";
+import { locationOperations } from "./../state/ducks/location";
 
 import { Link } from 'react-router-dom';
 
@@ -30,7 +31,7 @@ class Weather extends Component {
           isLeftSide={data ? true : false}
         />
         {data ? <CurrentWeather cityData={data} imageSrc={imagesData} /> : null}
-        <div class="link-to-about-page">
+        <div className="link-to-about-page">
           <Link to='/about'>About</Link>
         </div>
       </div>
@@ -41,20 +42,25 @@ class Weather extends Component {
 function mapStateToProps(state, props) {
   const stateWeatherFetch = state.weather.fetch;
   const stateImages = state.images.getImages;
+  const stateLocation = state.location.getLocation;
   return {
     data: stateWeatherFetch.data,
     fetching: stateWeatherFetch.fetching,
     error: stateWeatherFetch.error,
     imagesData: stateImages.data,
     imagesFetching: stateImages.fetching,
-    imagesError: stateImages.error
+    imagesError: stateImages.error,
+    locationData: stateLocation.data,
+    locationFetching: stateImages.fetching,
+    locationError: stateImages.error
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     fetch: bindActionCreators(weatherOperations, dispatch),
-    images: bindActionCreators(imagesOperations, dispatch)
+    images: bindActionCreators(imagesOperations, dispatch),
+    location: bindActionCreators(locationOperations, dispatch)
   };
 }
 

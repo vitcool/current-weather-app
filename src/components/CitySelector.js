@@ -32,30 +32,31 @@ export default class CitySelector extends Component {
       .includes(this.state.searchValue.toLowerCase());
   }
   showList() {
-    return (
-      <div className="collection">
-        {cities
-          .filter(element => this.filterData(element))
-          .map((element, index) => {
-            return (
-              <a
-                className={
-                  "collection-item " +
-                  (this.state.selectedCityId === element.id ? "active" : "")
-                }
-                key={element.id}
-                onClick={this.elementClick.bind(
-                  this,
-                  element.id,
-                  element.country
-                )}
-              >
-                {element.name} - {element.country}
-              </a>
-            );
-          })}
-      </div>
-    );
+    const filteredCities = cities.filter(element => this.filterData(element));
+    if (filteredCities.length > 0){
+      return (      
+        <div className="collection">
+          {filteredCities.map((element, index) => {
+              return (
+                <a
+                  className={
+                    "collection-item " +
+                    (this.state.selectedCityId === element.id ? "active" : "")
+                  }
+                  key={element.id}
+                  onClick={this.elementClick.bind(
+                    this,
+                    element.id,
+                    element.country
+                  )}
+                >
+                  {element.name} - {element.country}
+                </a>
+              );
+            })}
+        </div>
+      );
+    }
   }
   render() {
     return (
