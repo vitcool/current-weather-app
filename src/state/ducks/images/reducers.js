@@ -15,7 +15,7 @@ const getImages = (state = {}, action) => {
 };
 
 const reducer = combineReducers({
-  images: getImages
+  getImages: getImages
 });
 
 export default reducer;

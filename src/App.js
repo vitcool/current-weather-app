@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { bindActionCreators } from "redux";
 
@@ -7,7 +6,7 @@ import { connect } from "react-redux";
 import CitySelector from "./components/CitySelector";
 import CurrentWeather from "./components/CurrentWeather";
 
-import { currentWeatherDataOperations } from "./state/ducks/currentWeatherData";
+import { weatherOperations } from "./state/ducks/weather";
 import { imagesOperations } from "./state/ducks/images";
 
 class App extends Component {
@@ -20,7 +19,7 @@ class App extends Component {
     this.props.images.getImage(countryCode);
   }
   render() {
-    const { data, fetching, imagesData, imagesFetching } = this.props;
+    const { data, imagesData } = this.props;
     return (
       <div className="App">
         <CitySelector
@@ -34,20 +33,21 @@ class App extends Component {
 }
 
 function mapStateToProps(state, props) {
+  const stateWeatherFetch = state.weather.fetch;
+  const stateImages = state.images.getImages;
   return {
-    data: state.currentWeatherData.fetch.data,
-    fetching: state.currentWeatherData.fetch.fetching,
-    error: state.currentWeatherData.fetch.error,
-    imagesData: state.images.images.data,
-    imagesFetching: state.images.images.fetching,
-    imagesError: state.images.images.error,
-    state: state
+    data: stateWeatherFetch.data,
+    fetching: stateWeatherFetch.fetching,
+    error: stateWeatherFetch.error,
+    imagesData: stateImages.data,
+    imagesFetching: stateImages.fetching,
+    imagesError: stateImages.error
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetch: bindActionCreators(currentWeatherDataOperations, dispatch),
+    fetch: bindActionCreators(weatherOperations, dispatch),
     images: bindActionCreators(imagesOperations, dispatch),
   };
 }

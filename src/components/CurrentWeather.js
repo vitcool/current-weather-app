@@ -1,15 +1,17 @@
 import React, { Component } from "react";
-import "./../styles/CurrentWeather.css";
 
 import pressure from "./../img/pressure.png";
 import humidity from "./../img/humidity.png";
 import wind from "./../img/wind.png";
 import clouds from "./../img/clouds.png";
 
+import { H_PA_TO_MMHG_COEFICIENT, IMG_PATH_OPENWEATHERMAP } from "./../consts/helper";
+
+import "./../styles/CurrentWeather.css";
+
 export default class CurrentWeather extends Component {
   hPaToMmHg(valHPa) {
-    //to const 0.75006375541921
-    return Math.round(0.75006375541921 * valHPa).toFixed(2);
+    return Math.round(H_PA_TO_MMHG_COEFICIENT * valHPa).toFixed(2);
   }
   showWeatherData(cityData) {
     return (
@@ -25,10 +27,11 @@ export default class CurrentWeather extends Component {
             <div className="weather-icon">
               <img
                 src={
-                  "http://openweathermap.org/img/w/" +
+                  IMG_PATH_OPENWEATHERMAP +
                   cityData.weather[0].icon +
                   ".png"
                 }
+                alt={cityData.weather[0].description}
               />
             </div>
           </div>
@@ -51,7 +54,7 @@ export default class CurrentWeather extends Component {
             </div>
           </div>
         </div>
-        {this.props.imageSrc ? <img src={this.props.imageSrc} alt="city-image" className="country-image"/> : null}
+        {this.props.imageSrc ? <img src={this.props.imageSrc} alt="counrty" className="country-image"/> : null}
       </div>
     );
   }

@@ -1,10 +1,10 @@
-import { watcherSaga } from "./fetch";
-import { watcherPixabySaga } from "./images";
+import { watcherSaga } from "./fetchWeather";
+import { watcherPixabySaga } from "./getImages";
 import { fork } from 'redux-saga/effects'
 
 export default function* rootSaga() {
   yield [
-    fork(watcherSaga), // saga1 can also yield [ fork(actionOne), fork(actionTwo) ]
+    fork(watcherSaga),
     fork(watcherPixabySaga)
   ];
 }

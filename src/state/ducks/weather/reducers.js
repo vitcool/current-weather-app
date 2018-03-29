@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import * as types from "./types";
 
-const getCurrentWeatherDataReducer = (state = {}, action) => {
+const getWeatherReducer = (state = {}, action) => {
   switch (action.type) {
     case types.API_CALL_REQUEST:
       return { ...state, fetching: true, error: null };
@@ -15,7 +15,7 @@ const getCurrentWeatherDataReducer = (state = {}, action) => {
 };
 
 const reducer = combineReducers({
-  fetch: getCurrentWeatherDataReducer
+  fetch: getWeatherReducer
 });
 
 export default reducer;
