@@ -1,6 +1,5 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import axios from "axios";
-import * as actions from '../actions/fetch';
 import { API_KEY } from './../keys/index';
 
 // action types

@@ -21,14 +21,13 @@ class App extends Component {
   }
   render() {
     const { data, fetching, imagesData, imagesFetching } = this.props;
-
     return (
       <div className="App">
         <CitySelector
           elementClick={this.getApiData}
           isLeftSide={data ? true : false}
         />
-        {data ? <CurrentWeather cityData={data} /> : null}
+        {data ? <CurrentWeather cityData={data} imageSrc={imagesData}/> : null}
       </div>
     );
   }
@@ -39,9 +38,10 @@ function mapStateToProps(state, props) {
     data: state.currentWeatherData.fetch.data,
     fetching: state.currentWeatherData.fetch.fetching,
     error: state.currentWeatherData.fetch.error,
-    imagesData: state.images.data,
-    imagesFetching: state.images.fetching,
-    imagesError: state.images.error,
+    imagesData: state.images.images.data,
+    imagesFetching: state.images.images.fetching,
+    imagesError: state.images.images.error,
+    state: state
   };
 }
 

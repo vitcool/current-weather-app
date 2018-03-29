@@ -10,6 +10,12 @@ export default class CitySelector extends Component {
       selectedCityId: 0
     };
   }
+  // uncomment next block for skip city selector when debugging
+
+  // componentDidMount(){
+  //   this.props.elementClick(2643743, "GB");
+  // }
+  
   elementClick(cityId, countryCode) {
     this.setState({ selectedCityId: cityId });
     this.props.elementClick(cityId, countryCode);

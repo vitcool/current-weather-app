@@ -12,7 +12,6 @@ export default class CurrentWeather extends Component {
     return Math.round(0.75006375541921 * valHPa).toFixed(2);
   }
   showWeatherData(cityData) {
-    console.log(cityData);
     return (
       <div className="weather-info">
         <div className="actual-weather-data">
@@ -52,6 +51,7 @@ export default class CurrentWeather extends Component {
             </div>
           </div>
         </div>
+        {this.props.imageSrc ? <img src={this.props.imageSrc} alt="city-image" className="country-image"/> : null}
       </div>
     );
   }

@@ -9,7 +9,7 @@
 .city-name {
   font-size: 22px;
   font-weight: 600;
-  max-width: 260px;
+  max-width: 460px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -62,4 +62,14 @@
   padding: 40px;
   padding-top: 10px;
   color: white;
+}
+
+.country-image {
+  max-width: 90%;
+  margin-top: 40px;
+  margin-left: 5%;
+  position: relative;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  max-height: 70vh;
 }
