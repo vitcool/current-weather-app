@@ -1,0 +1,10 @@
+.Weather {
+  min-height: 100vh;
+}
+
+.link-to-about-page {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
