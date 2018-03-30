@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
-import cities from "./../mocks/cityList-min.json";
-
+import filterCities from "../helpers/getCityIdByName";
 import "./../styles/CitySelector.css";
 
 export default class CitySelector extends Component {
@@ -26,13 +25,8 @@ export default class CitySelector extends Component {
   onFilterChange(event) {
     this.setState({ searchValue: event.target.value.length > 3 ? event.target.value : "" });
   }
-  filterData(element) {
-    return element.name
-      .toLowerCase()
-      .includes(this.state.searchValue.toLowerCase());
-  }
   showList() {
-    const filteredCities = cities.filter(element => this.filterData(element));
+    const filteredCities = filterCities(this.state.searchValue);
     if (filteredCities.length > 0){
       return (      
         <div className="collection">
