@@ -18,9 +18,9 @@ export default class CitySelector extends Component {
   //   this.props.elementClick(2643743, "GB");
   // }
 
-  elementClick(cityId, countryCode) {
+  elementClick(cityId, city) {
     this.setState({ selectedCityId: cityId });
-    this.props.elementClick(cityId, countryCode);
+    this.props.elementClick(cityId, city);
   }
   onFilterChange(event) {
     this.setState({ searchValue: event.target.value.length > 3 ? event.target.value : "" });
@@ -41,7 +41,7 @@ export default class CitySelector extends Component {
                   onClick={this.elementClick.bind(
                     this,
                     element.id,
-                    element.country
+                    element.name
                   )}
                 >
                   {element.name} - {element.country}

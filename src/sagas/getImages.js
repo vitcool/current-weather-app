@@ -1,7 +1,6 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import axios from "axios";
 
-import countries from "./../mocks/countryCodes-min.json";
 import * as types from "./../state/ducks/images/types";
 
 import { API_PATH_PIXABAY } from './../consts/api';
@@ -12,20 +11,16 @@ export function* watcherPixabySaga() {
 }
 
 function fetchData(action) {
-  const country = getCountryNameByCountryCode(action.countryCode);
+  const city = action.city;
   return axios({
     method: "get",
     url: API_PATH_PIXABAY,
     params: {
       key: API_KEY_PIXABAY,
-      q: country ? country[0].name.replace(" ", "+") : null,
+      q: city ? city.replace(" ", "+") : null,
       orientation: "horizontal"
     }
   });
-}
-
-const getCountryNameByCountryCode = (countryCode) => {
-  return countries.filter((country) => (country.code === countryCode))
 }
 
 const getRandomImage = (images) => {

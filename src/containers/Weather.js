@@ -22,9 +22,9 @@ class Weather extends Component {
     //debugger
     this.props.location.getCurrentLocation();
   }
-  getApiData(index, countryCode) {
+  getApiData(index, city) {
     this.props.fetch.getApiData(index);
-    this.props.images.getImage(countryCode);
+    this.props.images.getImage(city);
   }
   render() {
     const { data, imagesData } = this.props;

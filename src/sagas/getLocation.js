@@ -23,12 +23,12 @@ function* workerSaga(action) {
   try {
     const response = yield call(fetchData, action);
     yield put({ type: types.API_CALL_SUCCESS, response }); 
-    const cities= yield filterCities(response.data.city);
+    const city = yield response.data ? response.data.city : null;
+    const cities= yield filterCities(city);
     const cityId = yield cities ? cities[0].id : null;
-    const countryCode = yield response.data.countryCode;
     if (cityId) {
       yield put({ type: weatherTypes.API_CALL_REQUEST, cityId }); 
-      yield put({ type: imagesTypes.API_CALL_REQUEST, countryCode }); 
+      yield put({ type: imagesTypes.API_CALL_REQUEST, city }); 
     }
   } catch (error) {
     yield put({ type: types.API_CALL_FAILURE, error });

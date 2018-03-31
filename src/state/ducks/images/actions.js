@@ -1,9 +1,9 @@
 import * as types from "./types";
 
-const getCountryImage = (countryCode) => {
+const getCountryImage = (city) => {
     return {
         type: types.API_CALL_REQUEST,
-        countryCode
+        city
     }
 }
 
