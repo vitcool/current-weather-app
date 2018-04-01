@@ -1,21 +1,41 @@
 import { combineReducers } from "redux";
-import * as types from "./types";
+import fetchImage from "./actions";
 
-const getImages = (state = {}, action) => {
+const initialState = {
+  data: null,
+  loading: false,
+  error: null,
+};
+
+const getImages = (state = initialState, action) => {
   switch (action.type) {
-    case types.API_CALL_REQUEST:
-      return { ...state, fetching: true, error: null };
-    case types.API_CALL_SUCCESS:
-      return { ...state, fetching: false, data: action.imageUrl };
-    case types.API_CALL_FAILURE:
-      return { ...state, fetching: false, data: null, error: action.error };
+    case fetchImage.TRIGGER:
+      return {
+        ...state,
+        loading: true,
+      };
+    case fetchImage.SUCCESS:
+      return {
+        ...state,
+        data: action.payload,
+      };
+    case fetchImage.FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    case fetchImage.FULFILL:
+      return {
+        ...state,
+        loading: false,
+      };
     default:
       return state;
   }
 };
 
 const reducer = combineReducers({
-  getImages: getImages
+  getImages
 });
 
 export default reducer;

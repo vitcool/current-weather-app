@@ -19,12 +19,11 @@ class Weather extends Component {
     this.getApiData = this.getApiData.bind(this);
   }
   componentDidMount(){
-    //debugger
     this.props.location.getCurrentLocation();
   }
   getApiData(index, city) {
     this.props.fetch.getApiData(index);
-    this.props.images.getImage(city);
+    this.props.images.fetchImage(city);
   }
   render() {
     const { data, imagesData } = this.props;

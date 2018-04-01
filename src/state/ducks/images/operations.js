@@ -1,9 +1,9 @@
-import actions from "./actions";
+import fetchImages from "./actions";
 
-const getImage = countryCode => {
-  return actions.getCountryImage(countryCode);
+const fetchImage = countryCode => {
+  return fetchImages(countryCode);
 };
 
 export default {
-  getImage
+  fetchImage
 };

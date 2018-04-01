@@ -1,10 +1,5 @@
-import * as types from "./types";
+import { createRoutine } from 'redux-saga-routines';
 
-const getCountryImage = (city) => {
-    return {
-        type: types.API_CALL_REQUEST,
-        city
-    }
-}
+const fetchImage = createRoutine('FETCH_IMAGE');
 
-export default { getCountryImage }
+export default fetchImage

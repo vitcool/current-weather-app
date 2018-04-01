@@ -3,7 +3,8 @@ import axios from "axios";
 
 import * as types from "./../state/ducks/location/types";
 import * as weatherTypes from "./../state/ducks/weather/types";
-import * as imagesTypes from "./../state/ducks/images/types";
+
+import fetchImage from "./../state/ducks/images/actions"
 
 import filterCities from '../helpers/getCityIdByName';
 import { API_PATH_IP_LOCATION } from './../consts/api';
@@ -28,7 +29,7 @@ function* workerSaga(action) {
     const cityId = yield cities ? cities[0].id : null;
     if (cityId) {
       yield put({ type: weatherTypes.API_CALL_REQUEST, cityId }); 
-      yield put({ type: imagesTypes.API_CALL_REQUEST, city }); 
+      yield put(fetchImage.trigger(city)); 
     }
   } catch (error) {
     yield put({ type: types.API_CALL_FAILURE, error });
