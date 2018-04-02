@@ -1,7 +1,7 @@
-import actions from "./actions";
+import getLocation from "./actions";
 
 const getCurrentLocation = () => {
-  return actions.getCurrentLocation();
+  return getLocation();
 };
 
 export default {

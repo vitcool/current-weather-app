@@ -1,21 +1,35 @@
 import { combineReducers } from "redux";
-import * as types from "./types";
+import getLocation from "./actions";
 
-const getLocation = (state = {}, action) => {
+const getCurrentLocation = (state = {}, action) => {
   switch (action.type) {
-    case types.API_CALL_REQUEST:
-      return { ...state, fetching: true, error: null };
-    case types.API_CALL_SUCCESS:
-      return { ...state, fetching: false, data: action.response.data.city };
-    case types.API_CALL_FAILURE:
-      return { ...state, fetching: false, data: null, error: action.error };
+    case getLocation.TRIGGER:
+      return {
+        ...state,
+        loading: true,
+      };
+    case getLocation.SUCCESS:
+      return {
+        ...state,
+        data: action.payload.data.city,
+      };
+    case getLocation.FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    case getLocation.FULFILL:
+      return {
+        ...state,
+        loading: false,
+      };
     default:
       return state;
   }
 };
 
 const reducer = combineReducers({
-  getLocation: getLocation
+  getLocation: getCurrentLocation
 });
 
 export default reducer;

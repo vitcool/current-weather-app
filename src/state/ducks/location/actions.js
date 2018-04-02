@@ -1,9 +1,5 @@
-import * as types from "./types";
+import { createRoutine } from 'redux-saga-routines'
 
-const getCurrentLocation = () => {
-    return {
-        type: types.API_CALL_REQUEST
-    }
-}
+const getLocation = createRoutine('GET_LOCATION')
 
-export default { getCurrentLocation }
+export default getLocation
