@@ -10,9 +10,8 @@ import { imagesOperations } from "./../state/ducks/images";
 import { locationOperations } from "./../state/ducks/location";
 
 import { getImage, getError as getErrorImage, getLoading as getLoadingImage } from "./../state/ducks/images/selectors";
-
 import { getLocation, getError as getErrorLocation, getLoading as getLoadingLocation } from "./../state/ducks/location/selectors";
-
+import { getWeatherData, getError as getErrorWeather, getLoading as getLoadingWeather } from "./../state/ducks/weather/selectors";
 
 import { Link } from 'react-router-dom';
 
@@ -48,11 +47,10 @@ class Weather extends Component {
 }
 
 function mapStateToProps(state, props) {
-  const stateWeatherFetch = state.weather.fetch;
   return {
-    data: stateWeatherFetch.data,
-    fetching: stateWeatherFetch.fetching,
-    error: stateWeatherFetch.error,
+    data: getWeatherData(state),
+    fetching: getLoadingWeather(state),
+    error: getErrorWeather(state),
     imagesData: getImage(state),
     imagesFetching: getLoadingImage(state),
     imagesError: getErrorImage(state),

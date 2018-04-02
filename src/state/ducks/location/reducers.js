@@ -1,7 +1,13 @@
 import { combineReducers } from "redux";
 import getLocation from "./actions";
 
-const getCurrentLocation = (state = {}, action) => {
+const initialState = {
+  data: null,
+  loading: false,
+  error: null,
+};
+
+const getCurrentLocation = (state = initialState, action) => {
   switch (action.type) {
     case getLocation.TRIGGER:
       return {

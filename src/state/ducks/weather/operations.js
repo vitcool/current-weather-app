@@ -1,9 +1,9 @@
-import actions from "./actions";
+import getWeatherData from "./actions";
 
-const getApiData = cityId => {
-  return actions.getApiData(cityId);
+const getWeatherApiData = cityId => {
+  return getWeatherData(cityId);
 };
 
 export default {
-  getApiData
+  getWeatherApiData
 };

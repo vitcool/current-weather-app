@@ -1,4 +1,4 @@
-import { watcherSaga } from "./fetchWeather";
+import { watcherSaga } from "./getWeather";
 import { watcherPixabySaga } from "./getImages";
 import { watcherLocationSaga } from "./getLocation";
 import { fork } from 'redux-saga/effects'

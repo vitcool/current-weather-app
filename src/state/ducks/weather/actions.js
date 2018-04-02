@@ -1,11 +1,6 @@
-import * as types from "./types";
+import { createRoutine } from 'redux-saga-routines'
 
-const getApiData = (cityId) => {
-    return {
-        type: types.API_CALL_REQUEST,
-        cityId
-    }
-}
+const getWeatherData = createRoutine('GET_WEATHER_DATA')
 
-export default { getApiData };
+export default getWeatherData
 

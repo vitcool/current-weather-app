@@ -1,10 +1,9 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import axios from "axios";
 
-import * as weatherTypes from "./../state/ducks/weather/types";
-
 import getLocation from "./../state/ducks/location/actions";
 import fetchImage from "./../state/ducks/images/actions"
+import getWeatherData from "./../state/ducks/weather/actions"
 
 import filterCities from '../helpers/getCityIdByName';
 import { API_PATH_IP_LOCATION } from './../consts/api';
@@ -28,8 +27,8 @@ function* workerSaga(action) {
     const cities= yield filterCities(city);
     const cityId = yield cities ? cities[0].id : null;
     if (cityId) {
-      yield put({ type: weatherTypes.API_CALL_REQUEST, cityId }); 
       yield put(fetchImage.trigger(city)); 
+      yield put(getWeatherData.trigger(cityId)); 
     }
   } catch (error) {
     yield put(getLocation.failure(error.message));

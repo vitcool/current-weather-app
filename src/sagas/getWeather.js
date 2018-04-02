@@ -1,13 +1,13 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import axios from "axios";
 
-import * as types from "./../state/ducks/weather/types";
+import getWeatherData from "./../state/ducks/weather/actions"
 
 import { API_PATH_OPENWEATHERMAP } from './../consts/api';
 import { API_KEY_OPENWEATHERMAP } from './../keys/index';
 
 export function* watcherSaga() {
-  yield takeLatest(types.API_CALL_REQUEST, workerSaga);
+  yield takeLatest(getWeatherData.TRIGGER, workerSaga);
 }
 
 function fetchData(action) {
@@ -15,7 +15,7 @@ function fetchData(action) {
     method: "get",
     url: API_PATH_OPENWEATHERMAP,
     params: {
-      'id' : action.cityId,
+      'id' : action.payload,
       'appid' : API_KEY_OPENWEATHERMAP,
       'units' : 'metric'
     }
@@ -25,8 +25,11 @@ function fetchData(action) {
 function* workerSaga(action) {
   try {
     const response = yield call(fetchData, action);
-    yield put({ type: types.API_CALL_SUCCESS, response });  
+    yield put(getWeatherData.success(response));  
   } catch (error) {
-    yield put({ type: types.API_CALL_FAILURE, error });
+    yield put(getWeatherData.failure(error.message));
+  }
+  finally {
+    yield put(getWeatherData.fulfill());
   }
 }
