@@ -1,7 +1,7 @@
-function checkIfDuckIsInRange( duck ) {
-    return duck.distance > 1000;
+const getImage = (state) => {
+    return state.images.getImages.data
 }
 
 export {
-    checkIfDuckIsInRange
+    getImage
 };

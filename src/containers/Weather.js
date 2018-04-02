@@ -9,6 +9,8 @@ import { weatherOperations } from "./../state/ducks/weather";
 import { imagesOperations } from "./../state/ducks/images";
 import { locationOperations } from "./../state/ducks/location";
 
+import { getImage } from "./../state/ducks/images/selectors";
+
 import { Link } from 'react-router-dom';
 
 import '../styles/Weather.css';
@@ -50,7 +52,7 @@ function mapStateToProps(state, props) {
     data: stateWeatherFetch.data,
     fetching: stateWeatherFetch.fetching,
     error: stateWeatherFetch.error,
-    imagesData: stateImages.data,
+    imagesData: getImage(state),
     imagesFetching: stateImages.fetching,
     imagesError: stateImages.error,
     locationData: stateLocation.data,
