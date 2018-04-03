@@ -23,6 +23,7 @@ class Weather extends Component {
     this.getApiData = this.getApiData.bind(this);
   }
   componentDidMount(){
+    debugger
     this.props.location.getCurrentLocation();
   }
   getApiData(index, city) {
